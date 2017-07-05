@@ -10,18 +10,19 @@ import random
 def main():
 
     #generate a random number
-    answer = random.randint(1,5)
+    answer = random.randint(1,100)
 
     #Greet the user and get their input
     guess = int(input("Hey! Let's play a game! I am thinking of" +
                           " a number between 1 and 100. Can you" +
                           "guess it? : "))
-        
+    
     #for loop to max out the number of guess
     for i in range(1,6): 
 
         #If the user guesses correctly, then terminate the program
         correct = check_guess(guess, answer)
+        
         #If correct answer was stated
         if (correct == True):
               #give the user back the total number of guesses
@@ -32,9 +33,12 @@ def main():
            #Stop program
             break
         else:
-            int(input("Enter in another guess: "))
-        
+            #change the guess vairable so the number is checked again
+             guess = int(input("Enter in another guess: "))
+         
         #Ask user if they want to play again
+
+       
                 
     confirm = str(input("Do you want to play again? : "))
 
@@ -42,20 +46,16 @@ def main():
     if(confirm == "yes"):
 
             #loop it back to input
-             int(input(" Enter in your guess: "))
+            guess = int(input(" Enter in your guess: "))
 
         #terminate the program if they say no
-    elif(confirm == "no"):
+    else:
     
 
             #say a goodbye
             print(" Enjoy your day! ")
+            print(answer)  
 
-    #just incase they try to type anything other than the two confirmations
-    else:
-            print("Enter a yes or a no.")
-            confirm = str(input("Do you want to play again? : "))
-            
 #Define the checking answer
 def check_guess(crguess, answer):
 
@@ -64,18 +64,18 @@ def check_guess(crguess, answer):
 
        #coingratulate the user 
         print("You guessed it!")
-        
-        return True
+
 
     #if the user was wrong
     else:
+        
         #if number guess was too high
-        if(crguess > answer):
-             print("The number was too high. ")
+        if(crguess < answer):
+             print("The number was too low. ")
 
         #if number guess was too low    
         else:
-             print("The number was too low. ")
+             print("The number was too high. ")
         return False
             
 #call the main            
